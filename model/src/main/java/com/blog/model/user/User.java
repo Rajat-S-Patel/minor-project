@@ -1,9 +1,12 @@
 package com.blog.model.user;
 
+import com.blog.model.post.Post;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Date;
 
 @Entity
@@ -20,9 +23,12 @@ public class User {
     private String password;
     private String bio;
     private String profileImageUrl;
+
+    @Temporal(TemporalType.DATE)
     private Date dateOfBirth;
     private Date dateOfRegistration;
 
-
-
+    @OneToMany(mappedBy = "author")
+    @JsonIgnore
+    private Collection<Post> posts;
 }
