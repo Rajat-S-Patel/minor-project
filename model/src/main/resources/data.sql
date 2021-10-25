@@ -1,0 +1,2 @@
+-- INSERT DUMMY DATA
+SELECT *from user;
